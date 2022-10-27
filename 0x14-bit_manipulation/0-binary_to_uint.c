@@ -1,15 +1,36 @@
-#ifndef MAIN_H
-#define MAIN_H
+#include "main.h"
+/**
+ * binary_to_uint - Entry Point
+ * @b: const char
+ * Return: 0
+ */
+unsigned int binary_to_uint(const char *b)
+{
+		unsigned int res = 0;
+		int base = 1, i = 0;
 
-#include <stdio.h>
-#include <stdlib.h>
+	
+		if (b == NULL)
+			return (0);
 
-int _putchar(char c);
-unsigned int binary_to_uint(const char *b);
-void print_binary(unsignied long int n);
-int get_bit(unsigned long int n, unsigned int index);
-int set_bit(unsigned long int *n, unsigned int index);
-int clear_bit(unsigned long int *n, unsigned int index);
-unsigned int flip_bits(unsigned long int n, unsigned long int m);
+	
+		while (b[i + 1])
+		{
+			if (b[i] != '0' && b[i] != '1')
+				return (0);
+			i++;
+		}
 
-#endif /* MAIN_H */
+	
+		while (i >= 0)
+		{
+			res += ((b[i] - '0') * base);
+			base *= 2;
+			i--;
+		}
+
+
+	
+		return (res);
+
+}
